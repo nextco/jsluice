@@ -95,6 +95,7 @@ func AllSecretMatchers() []SecretMatcher {
 		gcpKeyMatcher(),
 		firebaseMatcher(),
 		githubKeyMatcher(),
+		pentesterLabKeyMatcher(),
 
 		// REACT_APP_... containing objects
 		{"(object) @matches", func(n *Node) *Secret {

@@ -34,6 +34,13 @@ func extractSecrets(opts options, filename string, source []byte, output chan st
 
 		match.Filename = filename
 
+		if match.Kind == "pentesterLabKey" {
+			if data, ok := match.Data.(map[string]string); ok {
+				output <- fmt.Sprintf("PentesterLab Key Founded -> %s", data["key"])
+				continue
+			}
+		}
+
 		j, err := json.Marshal(match)
 		if err != nil {
 			continue
